@@ -32,7 +32,7 @@ body {
 .display-card{
     width: 65%;
     height: auto;
-    border: 1px solid #38bdf8;
+    border: 1px solid #94a3b8;
     border-radius: .5rem;
     padding: 1rem;
     display: flex;
@@ -60,7 +60,7 @@ label{
 }
 
 .soft_glow {
-    background: #f8fbff;
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 0.75rem;
     padding: 0.5rem 1rem;
 }
@@ -75,8 +75,8 @@ input {
     padding: .6rem 3.2rem .6rem 1.1rem; /* space for icon on the right */
     border-radius: 5rem;
     font-size: 1.2rem;
-    border: 1px solid #38bdf8;
-    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #94a3b8;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 input::placeholder{
@@ -111,7 +111,7 @@ input:focus {
     row-gap: 1.2rem;
     border-radius: .8rem;
     padding: 1.25rem;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -127,8 +127,8 @@ input:focus {
 }
 
 h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .country-flag {
@@ -145,35 +145,35 @@ h2 {
 }
 
 .weather-description{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .temperature{
- font-size: 4.9rem;
+ font-size: 4.8rem;
 }
 
 .wc3{
     width: 100%;
     height: auto;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
-}
-
-.footerDiv{
-    width: 100%;
 }
 
 .weather-tidbits{
     width: auto;
     height: auto;
-    padding: 1rem;
+    padding: .5rem .1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
 }
 
 .conditions{
     font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .footer{
@@ -187,9 +187,16 @@ h2 {
     border-radius: .5rem;
 }
 
-.footer p{
-    font-size: 1.1rem;
+.tidbit-label {
+    font-size: 1.075rem;
+    font-weight: 500;
     color: #1e293b;
+}
+  
+.tidbit-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
 }
 
 @media screen and (min-width: 1650px) {
@@ -202,45 +209,67 @@ h2 {
     }
 }
 
-@media screen and (max-width: 1023px) {
-    .display-card{
-        width: 60%;
-    }
-
-    .wc1{
-        padding: 0 .8rem;
-    }
-
-    .tidbit_text{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 750px) {
     .display-card{
         width: 70%;
     }
 
-    label{
-        width: 100%;
-        font-size: 1.05rem;
-        padding: .5rem 0;
+    .wc2{
+        row-gap: .2rem;
     }
+}
 
+@media screen and (max-width: 640px) {
     h2{
-        font-size: 1.1rem;
-    }
-
-    .country-flag{
-        font-size: 1.9rem;
-    }
-
-    .weather-description{
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .temperature{
-        font-size: 4rem;
+        font-size: 4.3rem;
+    }
+
+    .wc3{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .weather-tidbits {
+        width: 48%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .display-card{
+        width: 80%;
+    }
+
+    label{
+        font-size: 1.3rem;
+    }
+
+    h2{
+        font-size: 1.15rem;
+    }
+
+    .country-flag{
+        font-size: 1.8rem;
+    }
+
+    .weather-description{
+        font-size: 1.2rem;
+    }
+
+    .temperature{
+        font-size: 4.1rem;
+    }
+
+    .weather-tidbits{
+        width: 48%;
     }
 
     .conditions{

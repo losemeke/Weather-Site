@@ -124,84 +124,74 @@ function printWeatherUI(data){
         precipitationText
     } = data;
 
-        let weatherCardDiv = document.createElement(`div`)
-        weatherCardDiv.classList.add(`weather-card`)
+    let weatherCardDiv = document.createElement(`div`)
+    weatherCardDiv.classList.add(`weather-card`)
 
-        let headerDiv = document.createElement(`div`)
-        headerDiv.classList.add(`wc1`)
+    let headerDiv = document.createElement(`div`)
+    headerDiv.classList.add(`wc1`)
 
-        let cityElement = document.createElement(`h2`)
-        cityElement.textContent = cityInput
+    let cityElement = document.createElement(`h2`)
+    cityElement.textContent = cityInput
 
-        let flagElement = document.createElement(`span`)
-        flagElement.classList.add(`country-flag`)
-        flagElement.textContent = flag
+    let flagElement = document.createElement(`span`)
+    flagElement.classList.add(`country-flag`)
+    flagElement.textContent = flag
 
-        headerDiv.append(cityElement, flagElement)
+    headerDiv.append(cityElement, flagElement)
 
-        // Middle
-        let midSectionDiv = document.createElement(`div`)
-        midSectionDiv.classList.add(`wc2`)
+    // Middle
+    let midSectionDiv = document.createElement(`div`)
+    midSectionDiv.classList.add(`wc2`)
 
-        let descriptionElement = document.createElement(`p`)
-        descriptionElement.classList.add(`weather-description`)
-        descriptionElement.textContent = `${description}`
+    let descriptionElement = document.createElement(`p`)
+    descriptionElement.classList.add(`weather-description`)
+    descriptionElement.textContent = `${description}`
 
-        let temperatureElement = document.createElement(`p`)
-        temperatureElement.classList.add(`temperature`)
-        temperatureElement.textContent = `${tempCelsius}°C`
+    let temperatureElement = document.createElement(`p`)
+    temperatureElement.classList.add(`temperature`)
+    temperatureElement.textContent = `${tempCelsius}°C`
 
-        midSectionDiv.append(descriptionElement, temperatureElement)
+    midSectionDiv.append(descriptionElement, temperatureElement)
 
-        // Footer
-        let footerDiv = document.createElement(`div`)
-        footerDiv.classList.add(`wc3`)
+    // Footer
+    let footerDiv = document.createElement(`div`)
+    footerDiv.classList.add(`wc3`)
 
-        // Function to create the weather-tidbits container with a paragraph element
-        function createWeatherTidbit(classNames, icon, label, value) {
-            let container = document.createElement("div");
-            container.classList.add("weather-tidbits");
+    // Function to create the weather-tidbits container with a paragraph element
+    function createWeatherTidbit(classNames, icon, label, value) {
+        let container = document.createElement("div");
+        container.classList.add("weather-tidbits");
         
-            let p = document.createElement("p");
-            
-            // this function is created to support easy CSS. It lets us add classnames like HTML. See lines 195-198 
-            if (typeof classNames === "string") {
-                p.classList.add(...classNames.split(" "));
-            } else if (Array.isArray(classNames)) {
-                p.classList.add(...classNames);
-            }
-        
-            // label span
-            let labelSpan = document.createElement("span");
-            labelSpan.classList.add("tidbit_text");
-            labelSpan.textContent = `${label} `;
-        
-            // icon span
-            let iconSpan = document.createElement("span");
-            iconSpan.textContent = icon;
-        
-            // value span
-            let valueSpan = document.createElement("span");
-            valueSpan.classList.add("tidbit_value");
-            valueSpan.textContent = ` ${value}`;
-        
-            p.append(labelSpan, iconSpan, valueSpan);
-            container.appendChild(p);
-            return container;
+        // this function is created to support easy CSS. It lets us add multiple classnames like HTML. See lines 195-198 for execution
+        if (typeof classNames === "string") {
+            container.classList.add(...classNames.split(" "));
+        } else if (Array.isArray(classNames)) {
+            container.classList.add(...classNames);
         }
-        
+    
+        // Line 1: label + icon
+        let labelLine = document.createElement("p");
+        labelLine.classList.add("tidbit-label");
+        labelLine.textContent = `${label} ${icon}`;
 
-        // Create each weather tidbit container
-        let humidityContainer = createWeatherTidbit("humidity conditions", "💧", "Humidity", `${humidity}%`);
-        let windSpeedContainer = createWeatherTidbit("wind-speed conditions", "💨", "Wind Speed", `${windSpeedKmH} km/h`);
-        let sunriseContainer = createWeatherTidbit("sunrise conditions", "🌅", "Sunrise", `${sunriseTime}`);
-        let sunsetContainer = createWeatherTidbit("sunset conditions", "🌇", "Sunset", `${sunsetTime}`);
-        
-        // Append all tidbit containers to wc3
-        footerDiv.append(humidityContainer, windSpeedContainer, sunriseContainer, sunsetContainer);
-        weatherCardDiv.append(headerDiv, midSectionDiv, footerDiv);
-        displayCardDiv.append(weatherCardDiv);
-      
+        // Line 2: value
+        let valueLine = document.createElement("p");
+        valueLine.classList.add("tidbit-value");
+        valueLine.textContent = value;
+
+        container.append(labelLine, valueLine);
+        return container;
+    }
+    // Create each weather tidbit container
+    let humidityContainer = createWeatherTidbit("humidity conditions", "💧", "Humidity", `${humidity}%`);
+    let windSpeedContainer = createWeatherTidbit("wind-speed conditions", "💨", "Wind Speed", `${windSpeedKmH} km/h`);
+    let sunriseContainer = createWeatherTidbit("sunrise conditions", "🌅", "Sunrise", `${sunriseTime}`);
+    let sunsetContainer = createWeatherTidbit("sunset conditions", "🌇", "Sunset", `${sunsetTime}`);
+    
+    // Append all tidbit containers to wc3
+    footerDiv.append(humidityContainer, windSpeedContainer, sunriseContainer, sunsetContainer);
+    weatherCardDiv.append(headerDiv, midSectionDiv, footerDiv);
+    displayCardDiv.append(weatherCardDiv);   
 }
 
 
